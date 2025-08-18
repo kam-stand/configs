@@ -7,8 +7,11 @@ spring:
     name: product-service
   data:
     mongodb:
-      uri: "mongodb://root:password@mongodb:20717/productdb?authSource=admin"  # Docker container running mongodb
       database: productdb
+      host: mongodb
+      port: 27017
+
+
 
 management:
   endpoints:
