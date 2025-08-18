@@ -1,23 +1,24 @@
 server:
   port: 8020
 
-
 spring:
   application:
     name: product-service
+
   data:
     mongodb:
-      database: productdb
-      host: mongodb
+      host: mongodb          # Docker service name from docker-compose
       port: 27017
-
-
+      database: productdb
+      username: root
+      password: password
+      authentication-database: admin
 
 management:
   endpoints:
     web:
       exposure:
-        include: health,refresh
+        include: health, refresh
   health:
     readiness-state:
       enabled: true
@@ -30,13 +31,13 @@ management:
 
 eureka:
   instance:
-    hostname: eureka-server # Docker service name
-    prefer-ip-address: true   # <--- added this line
+    prefer-ip-address: true
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://eureka-server:8761/eureka/
 
+# Optional custom properties
 example:
   key: example-value
